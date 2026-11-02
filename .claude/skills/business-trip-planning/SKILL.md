@@ -6,7 +6,7 @@ description: Plan a business trip from Vancouver. Use when the user mentions an 
 # Business trip planning
 
 ## Traveller profile
-- Home airport: Vancouver (YVR), Pacific Time.
+- Home: 3047 Spencer Close, West Vancouver, BC V7V 4R8. Home airport: Vancouver (YVR), Pacific Time.
 - Preferred airline: Air Canada, nonstop where available.
 - Has 2 young kids, so every night away matters. Hard cap: 3 nights away; fewer if there was a trip the week before.
 - Uses trips to meet business contacts and personal network in the destination city.
@@ -92,7 +92,7 @@ For each flight, add:
 Ground-leg rules:
 - **Daytime:** take the airport train where one exists (Toronto: UP Express). Montreal has no airport train until the REM station opens (expected late 2027), so use Uber there.
 - **Early morning, late night, or no practical train:** Uber.
-- **Home:** West Vancouver. There's no practical train to YVR, so use Uber. Ask for the exact address if needed; never write it into calendar events or this repo.
+- **Home:** 3047 Spencer Close, West Vancouver, BC V7V 4R8. There's no practical train to YVR, so use Uber. Use this address for Google Maps times; in calendar events, just say "home (West Vancouver)".
 - Get times from Google Maps directions with **Arrive by** / **Depart at** set to the exact day and time; type addresses into the fields, don't put them in the URL. Use the upper end of the "typically X–Y min" range and note the range in the description.
 
 ### 4. Colour and label
