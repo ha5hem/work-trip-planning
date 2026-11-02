@@ -128,6 +128,15 @@ Judgement on filler time (Travel colour):
 ### 7. Record it
 Add the travel schedule, the meeting windows, the placeholders and what was declined/cancelled to the trip record.
 
+## Google Sheets
+Read and edit the user's existing sheets in place with `scripts/sheets.py` (Sheets API, signed in as hash@merchantgrowth.com, spreadsheets scope only). The Google Drive connector can copy, rename and share files but can't edit cells.
+- Run `python scripts/sheets.py --help` for commands: `tabs`, `get` (`--formulas`), `set`, `append`, `clear`, `add-tab`, `delete-tab`, `batch` (raw batchUpdate requests for formatting/validation).
+- Pass the spreadsheet ID or its URL. Quote tab names in ranges: `"'All Contacts'!A1:H10"`.
+- Values are parsed like typing in the UI (formulas work); use `--raw` for text that must stay text (phone numbers, IDs, leading zeros).
+- Read before you write, and read back after to verify.
+- Credentials and token live in `~/.config/claude-sheets/`, never in this repo. If it says "Not signed in", run `python scripts/sheets.py auth`.
+- Contacts to meet live in [Merchant Contact List](https://docs.google.com/spreadsheets/d/1zIoeORrUaCYFEN5If1EUbvEdiij4zulhxyoGgAbgSO0/edit) (tabs: All Contacts, Close Contacts, DIM for dropdown values). Columns: Contact Name, Company Name, Category, Contact Email, Phone Number, City, Priority, Meeting Status.
+
 ## Trip record
 Keep one file per trip at `trips/YYYY-MM-<city>.md` with:
 - Event: name, venue, attendance blocks (local time)
