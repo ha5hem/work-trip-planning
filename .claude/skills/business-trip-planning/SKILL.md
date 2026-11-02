@@ -1,6 +1,6 @@
 ---
 name: business-trip-planning
-description: Plan a business trip from Vancouver. Use when the user mentions an upcoming trip, conference or event in another city, or asks for flight options or travel dates. Covers setting dates from the calendar, flight options, the flight booking-request email draft to Dave, the hotel search and hotel email, and the trip record.
+description: Plan a business trip from Vancouver. Use when the user mentions an upcoming trip, conference or event in another city, or asks for flight options or travel dates. Covers setting dates from the calendar, flight options, the flight booking-request email draft to Dave, the hotel search and hotel email, calendar management (flights, travel blocks, labels, declining conflicts, partner meeting placeholders), and the trip record.
 ---
 
 # Business trip planning
@@ -22,6 +22,7 @@ description: Plan a business trip from Vancouver. Use when the user mentions an 
 5. Once the user picks, update the trip record.
 6. **Draft the booking request** for Dave (see below).
 7. **Find a hotel** (see below).
+8. **Manage the calendar** once flights are booked (see Calendar management).
 
 ## Flight lookup
 - Look for Air Canada nonstop schedules for the exact dates. Note the season, since schedules change around late October and late March.
@@ -68,6 +69,64 @@ Dave (David Gens) books travel. Once flights are chosen, create a Gmail draft as
    Paige, could you please help book whichever one fits our approach?
    Thanks,
    ```
+
+## Calendar management
+Do this once the booking confirmation arrives. Use the Google Calendar connector; set `notificationLevel: NONE` on edits to solo events.
+
+### 1. Read the booking
+Pull flight numbers, local times, cabin, booking reference and seat status from the Air Canada confirmation in Gmail (search `from:aircanada`). Use the confirmation, not the trip record, as the source of truth; flag any difference (e.g. a cabin other than the one requested).
+
+### 2. Get time zones right
+- Create each event with an explicit IANA `timeZone`: `America/Vancouver` for BC, `America/Toronto` for Montreal/Toronto.
+- Check the offset against the flight duration before trusting it. BC is on UTC−7 year-round in this calendar, so in winter Vancouver is **2 h** behind Eastern, not 3 (AC304: 10:20 PT + 4h44 = 17:04 ET).
+- A flight spans two zones: start and end must be in one zone, so convert the arrival into the departure zone.
+- Check existing trip events (dinners, conferences) for entries made in the wrong zone and fix them with the user's OK.
+
+### 3. Add travel blocks
+For each flight, add:
+1. **Travel to <airport>**: from the origin to the airport, ending at check-in.
+2. **Check-in: <flight>**: 1 hour before departure.
+3. **✈ <flight> <from>→<to> (dep HH:MM TZ, arr HH:MM TZ)**: departure to arrival. Put the aircraft, cabin, booking reference, ticket number and seat status in the description.
+4. **Travel from <airport>**: arrival + ~20 min to deplane and reach the curb, plus the ground leg.
+
+Ground-leg rules:
+- **Daytime:** take the airport train where one exists (Toronto: UP Express). Montreal has no airport train until the REM station opens (expected late 2027), so use Uber there.
+- **Early morning, late night, or no practical train:** Uber.
+- **Home:** West Vancouver. There's no practical train to YVR, so use Uber. Ask for the exact address if needed; never write it into calendar events or this repo.
+- Get times from Google Maps directions with **Arrive by** / **Depart at** set to the exact day and time; type addresses into the fields, don't put them in the URL. Use the upper end of the "typically X–Y min" range and note the range in the description.
+
+### 4. Colour and label
+Labels are tied to the standard event colours (`colorId`):
+
+| Label | Colour | colorId | Use for |
+|---|---|---|---|
+| Travel | Graphite | 8 | Flights, Ubers, check-ins, hotel downtime, check-out |
+| Partner Meetings | Blueberry | 9 | Partner dinners, breakfasts, coffees, placeholders |
+| Conferences & Events | Lavender | 1 | Conferences, event dinners, forums (include duplicate copies from registration invites) |
+| 1:1's | Tangerine | 6 | (existing) |
+
+Don't use Sage (2), which is reserved for something else. The connector can only set the 11 standard colours.
+
+### 5. Clear conflicting meetings
+List every event from the first travel block to the last, then:
+- **Recurring meetings organized by others:** decline that instance only (`respond_to_event`, `declined`, no comment).
+- **Recurring meetings the user organizes:** these can't be declined, only cancelled. List them and ask first; on a yes, cancel that instance only, with attendees notified.
+- **Solo blocks** (prep, lunch, focus): leave them.
+- Report what was declined and cancelled, and suggest the user follow up with anyone whose 1:1 was cancelled.
+
+### 6. Add meeting placeholders
+Fill the remaining on-site time with `[Placeholder] Partner <Dinner|Breakfast|Coffee / Office Meeting> – TBD` blocks (Partner Meetings colour, busy, no guests). Framework:
+- **Dinner:** ~5:30–7:30 PM.
+- **Breakfast:** ~8:00–9:30 AM.
+- **Daytime coffee/office:** 1 hr between 9 AM and 5 PM, with 30 min between meetings.
+
+Judgement on filler time (Travel colour):
+- After a conference ends, block ~1 hr of **hotel downtime** before dinner.
+- On departure day, block time to **get back to the hotel, pack and check out** before the airport Uber. Keep the last meeting close to the hotel.
+- Skip any slot that collides with flights, the event or an existing dinner, and say why.
+
+### 7. Record it
+Add the travel schedule, the meeting windows, the placeholders and what was declined/cancelled to the trip record.
 
 ## Trip record
 Keep one file per trip at `trips/YYYY-MM-<city>.md` with:
