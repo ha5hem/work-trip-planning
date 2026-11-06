@@ -74,7 +74,9 @@ Original conflict notes:
 - Wed 25: Sam 1:1 10:30–11:00 PT (= 12:30–13:00 ET) and Sean 1:1 11:00–11:30 PT (= 13:00–13:30 ET) fall during check-in/boarding.
 
 ## Hotel
-Nights Mon 23 + Tue 24. Ranked by location, then reviews, then availability, then cost. Rates are Google Hotels' lowest nightly price shown for Nov 23–25 (CAD, checked 2026-10-31); all showed bookable rates except Le St-James.
+**BOOKED (Paige, 2026-11-06): Fairmont The Queen Elizabeth**, 900 René-Lévesque Blvd W, Mon 23 → Wed 25 (2 nights). Booking code 284155721 (from the confirmation link; verify). Promo rate includes $50/day hotel F&B credit; Accor ALL Gold perks. Added to calendar as an all-day event; travel blocks updated with the address.
+
+Shortlist considered: nights Mon 23 + Tue 24. Ranked by location, then reviews, then availability, then cost. Rates are Google Hotels' lowest nightly price shown for Nov 23–25 (CAD, checked 2026-10-31); all showed bookable rates except Le St-James.
 
 | # | Hotel | Area | To Place Ville Marie (Tue 8 AM) | To Auberge Saint-Gabriel (Mon dinner) | Google rating | From / night |
 |---|---|---|---|---|---|---|
@@ -92,7 +94,36 @@ Nights Mon 23 + Tue 24. Ranked by location, then reviews, then availability, the
 Status: narrowed to **Fairmont The Queen Elizabeth** or **Humaniti** (2026-11-02). Humaniti preferred for walkability to both venues and mid-range cost. Gmail draft to Dave & Paige asking about the company's hotel booking approach and asking Paige to book: drafted, not sent.
 
 ## Contacts to meet
-TBD (free windows: Tue evening after 5 PM, Wed morning)
+Master lists: [Merchant Contact List → Contact List tab](https://docs.google.com/spreadsheets/d/1zIoeORrUaCYFEN5If1EUbvEdiij4zulhxyoGgAbgSO0/edit) (work) and the personal Business Contact List. Partner priority = volume tier.
+
+### Outreach (BDC folks are covered at the two BDC events)
+Booking order, one at a time; each gets the next open slot:
+1. **Lee Dermer + Tommy Leblanc (Groupe SFA): CONFIRMED.** Tue 24 dinner 5:30–7:30 PM at **Bar George**, 1440 Rue Drummond (Le Mount Stephen). OpenTable #436966 (personal account). Calendar invite sent and booking confirmed by email 2026-11-04.
+2. **Tamer "Jake" Farag (Fero): CONFIRMED, Wed 25, 10:00–11:00 AM at Café Myriade**, 1432 Rue Mackay (4.5★, 1,447 reviews; ~12 min walk from the Fairmont). He didn't say where he's coming from, so the invite and email (2026-11-06) offer to move it.
+3. **Malik Jacoubi (Nesto, personal):** Wed 25 breakfast ~8:00 AM. Email sent by Hash 2026-11-06; awaiting reply.
+
+Hotel not confirmed yet (Paige suggested the Fairmont QE; waiting on Dave), so the email says "most likely the Fairmont Queen Elizabeth".
+
+### Shortlist (rebuilt 2026-11-02 from both lists)
+Picked for: in Montreal that week, top volume tier or strategic, and a reason to meet now. Three open slots, plus the two BDC events.
+
+| # | Contact | Company (list, priority/rank) | Slot | Why now |
+|---|---|---|---|---|
+| 1 | **Isabelle Hudon** | BDC, President & CEO (Retail, P1) | Mon dinner / Tue forum (no extra slot) | Exec sponsor of the partnership; visited MG Oct 19 |
+| 2 | **Miguel Barrieras** + **Christopher Rankin** | BDC (Retail, P1) | **Wed breakfast 8:00–9:30** | Pilot and partnership proposal in progress; in-person next steps |
+| 3 | **Tamer "Jake" Farag** | Fero Capital (Wholesale, P1, rank 6) | **Tue dinner 5:30–7:30** | Montreal; partner since 2014, co-invests, offered a meal; open concerns on stacking and "in our books" declines |
+| 4 | **Charles Bensimon** | Nuvei (Wholesale, P2, rank 12) | **Wed coffee 10:00–11:00** | Nuvei HQ is downtown Montreal; wants Fencescape refi and biweekly commissions |
+| 5 | **Malik Jacoubi** | Nesto (personal list, P1 close contact) | Tue drinks after dinner (~8 PM) | Montreal-based personal network contact |
+| 6 | **Adil Hassam** | BDC (Retail, P1) | At Mon dinner / Tue forum | Host of both events; day-to-day BDC relationship |
+
+**Alternates** (if someone declines):
+- **Dinner:** Ammar Sikandar (Kingsmen, P1 rank 3; Montreal office, but he signs from Oakville, so confirm he's in town).
+- **Coffee:** Scott Clendenan (Sonoma Capital, Retail P1 rank 7; Montreal office) or Noah Harris (Forward Funding, P1 rank 7; Montreal, but unresponsive).
+- **Personal:** Frederic Roy (Hardbacon) or HelloSafe.
+
+- **Strong candidate (added 2026-11-02):** Lee Dermer, EVP at Groupe SFA / AFS (Wholesale P1, rank 5). SFA has Gatineau and Montreal offices. Lee is on a 514 number, so he's likely in Montreal; Tommy Leblanc (Président) is on 819, so likely Gatineau. Outranks Nuvei (rank 12) for the Wed coffee.
+
+Not shortlisted: AFN, MHB and SmartCap (top-volume but based in NY/Toronto).
 
 ## To-do
 - [x] Confirm number of nights (2)

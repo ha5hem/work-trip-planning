@@ -88,6 +88,8 @@ def sheet_id(svc, sid, title):
 
 
 def main():
+    # Windows consoles and pipes default to cp1252, which garbles accents in JSON output.
+    sys.stdout.reconfigure(encoding="utf-8")
     p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     sub = p.add_subparsers(dest="cmd", required=True)
     sub.add_parser("auth")

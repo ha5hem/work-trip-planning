@@ -86,7 +86,7 @@ Pull flight numbers, local times, cabin, booking reference and seat status from 
 For each flight, add:
 1. **Travel to <airport>**: from the origin to the airport, ending at check-in.
 2. **Check-in: <flight>**: 1 hour before departure.
-3. **✈ <flight> <from>→<to> (dep HH:MM TZ, arr HH:MM TZ)**: departure to arrival. Put the aircraft, cabin, booking reference, ticket number and seat status in the description.
+3. **✈ <flight> <from>→<to> (dep HH:MM TZ, arr HH:MM TZ)**: departure to arrival. Put the aircraft, cabin, booking reference, ticket number and seat status in the description. Invite the family calendar as an attendee on every flight event: `family15313986802336790329@group.calendar.google.com`.
 4. **Travel from <airport>**: arrival + ~20 min to deplane and reach the curb, plus the ground leg.
 
 Ground-leg rules:
@@ -102,10 +102,12 @@ Labels are tied to the standard event colours (`colorId`):
 |---|---|---|---|
 | Travel | Graphite | 8 | Flights, Ubers, check-ins, hotel downtime, check-out |
 | Partner Meetings | Blueberry | 9 | Partner dinners, breakfasts, coffees, placeholders |
-| Conferences & Events | Lavender | 1 | Conferences, event dinners, forums (include duplicate copies from registration invites) |
+| Conferences & Events | Grape | 3 | Conferences, event dinners, forums (include duplicate copies from registration invites) |
+| Interviews | Lavender | 1 | (existing; don't use for trip events) |
+| Team Meetings | Banana | 5 | (existing) |
 | 1:1's | Tangerine | 6 | (existing) |
 
-Don't use Sage (2), which is reserved for something else. The connector can only set the 11 standard colours.
+Don't use Sage (2), which is reserved for something else, or Peacock (7), the calendar's default colour. The connector can only set the 11 standard colours. Each colour holds only one label, so check an event's returned `label.displayName` after setting a colour.
 
 ### 5. Clear conflicting meetings
 List every event from the first travel block to the last, then:
@@ -125,6 +127,20 @@ Judgement on filler time (Travel colour):
 - On departure day, block time to **get back to the hotel, pack and check out** before the airport Uber. Keep the last meeting close to the hotel.
 - Skip any slot that collides with flights, the event or an existing dinner, and say why.
 
+### 6b. Pick a venue once a meal is confirmed
+If the guests don't suggest a place, suggest 3–5 restaurants. Rank by, in order:
+1. **Walkable** from the hotel or the previous meeting (≤10 min ideal, ~15 max); give walk times.
+2. **Great ratings:** Google rating and count; note any notable lists.
+3. **Cost:** nice, not over the top. $$$, about $30–65 per person. No tasting-menu $$$$.
+4. **Available:** check the booking platform (OpenTable/Resy/Libro/own site) for the party size and time; confirm it's open that weekday. Look only; never book without the user's OK.
+5. Quiet enough for business, with real tables.
+
+Then send the guests a calendar invite with the venue as the location (Partner Meetings colour), and reply on the email thread confirming the booking.
+
+**Coffee/breakfast venues:** ask the guest where they'll be coming from, then pick a well-rated café roughly halfway between that and the hotel or previous meeting.
+
+**Reservations:** book on OpenTable in the user's Chrome. OpenTable asks for a verification code (phone or email) unless signed in; never enter that code or sign in for the user. Ask the user to sign in (personal account hahosn@gmail.com) or to type the code, since holds last only ~5 minutes. Leave all marketing and SMS opt-ins unchecked.
+
 ### 7. Record it
 Add the travel schedule, the meeting windows, the placeholders and what was declined/cancelled to the trip record.
 
@@ -135,7 +151,18 @@ Read and edit the user's existing sheets in place with `scripts/sheets.py` (Shee
 - Values are parsed like typing in the UI (formulas work); use `--raw` for text that must stay text (phone numbers, IDs, leading zeros).
 - Read before you write, and read back after to verify.
 - Credentials and token live in `~/.config/claude-sheets/`, never in this repo. If it says "Not signed in", run `python scripts/sheets.py auth`.
-- Contacts to meet live in [Merchant Contact List](https://docs.google.com/spreadsheets/d/1zIoeORrUaCYFEN5If1EUbvEdiij4zulhxyoGgAbgSO0/edit) (tabs: All Contacts, Close Contacts, DIM for dropdown values). Columns: Contact Name, Company Name, Category, Contact Email, Phone Number, City, Priority, Meeting Status.
+
+## Contacts to meet
+Two master lists, not trip-specific. Check **both** for every trip:
+- **Merchant (work):** [Merchant Contact List](https://docs.google.com/spreadsheets/d/1zIoeORrUaCYFEN5If1EUbvEdiij4zulhxyoGgAbgSO0/edit), tab **Contact List**. DIM holds the dropdown values.
+- **Personal:** [Business Contact List](https://docs.google.com/spreadsheets/d/1jQuBv3k8J_PEYpX56TUsRqplsDJukZHRMr7OqMoqwQg/edit) (owned by the personal account, shared with hash@merchantgrowth.com), tabs All Contacts and Close Contacts. Read only unless asked; don't copy personal contacts into the work list.
+
+Contact List columns: Contact Name, Company Name, Category, Contact Email, Phone Number, City, Priority, Meeting Status, Why meet, Proposed slot, Source, Volume Rank.
+- **Categories:** Wholesale Partners (brokers/ISOs), Retail Partner (referral partners, e.g. BDC), plus the DIM list.
+- **Priority for partners = volume.** The user supplies ranked lists. Put the rank in Volume Rank and set Priority by tier: ranks 1–7 = 1, 8–14 = 2, 15+ = 3.
+- When researching a partner, check Gmail signatures (name, title, phone, city) and the web (HQ, local office). Mark inferences "(likely)" or "TBC" and note the source.
+
+For a trip: filter both lists by the destination city/region, pick targets by priority, and put the trip shortlist and slots in the trip record, not in the master list.
 
 ## Trip record
 Keep one file per trip at `trips/YYYY-MM-<city>.md` with:
